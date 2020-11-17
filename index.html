@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*
+		{
+			margin:0px;
+			padding: 0px;
+			font-family: sans-serif;
+		}
+		header{
+			background: black;
+			height: auto;
+			color: white;
+			font-weight: bold;
+			font-size: 70px;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+		}
+		.border
+		{
+			border:1px solid;
+		}
+		.play-area
+		{
+			height: auto;
+			display: flex;
+			justify-content: space-around;
+		}
+		.player
+		{
+			width: 40%;
+			height: auto;
+			margin: 10px 0px;
+		}
+
+		.selected
+		{
+			padding-top: 20px;
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.selected img
+		{
+			width: 100px;
+			height: 100px;
+		}
+
+		.choice
+		{
+			margin-right: auto;
+			margin-left: auto;
+			margin-bottom: 10px;
+			height: 60%;
+			width: 60%;
+			display: flex;
+			justify-content: center;
+		}
+
+	
+/*		.user-opt:hover
+		{
+			transform: scale(1.1); 	 
+			background: blue;
+		}
+		.user-opt:active
+		{
+			background: red;
+		}*/
+
+		.btn-select
+		{
+			/*border:none !important;*/
+			border-radius: 50%;
+			background: rgb(245, 233, 66);
+		}
+
+		.btn-select:hover
+		{
+			background:black;
+			transform: scale(1.1);
+		}
+		.btn-select:active
+		{	
+			background: blue;
+		}
+
+		/*Play button*/
+		.bottom
+		{
+			display: flex;
+			justify-content: center;
+		}
+
+		.btn-play
+		{
+			box-shadow: none;
+			text-shadow: none;
+			height: 30px;
+			width: 40px;
+			display: flex;
+			justify-content: center;
+			border:2px black solid;
+		}
+
+		.btn-play:active
+		{
+			background: black;
+			color: white;
+		}
+		/*Play button*/
+
+		figure
+		{
+			margin: 2px;
+			background: rgb(245, 233, 66);
+			border-radius: 50%;
+		}
+		
+		
+
+		@media screen and (max-width: 800px)
+		{
+			header{
+				font-size: 20px;
+			}
+		}
+		
+		#form_div
+		{
+			z-index:10;
+			width: 40%;	
+			margin: 5px auto;
+			font-size: 20px;
+		}
+		
+		
+		#form_div .btn-play
+		{
+			//margin-right: auto;
+			//margin-left: auto;
+			margin: 5px auto;
+		}
+		.disp-flex
+		{
+			display: flex;
+			justify-content: center;
+			margin: 5px auto;
+		}
+		
+		.disp-flex input
+		{
+			height: 22px;
+			font-size:20px;
+			margin: 0px 4px;
+			/*font-margin: 0 0.5px;*/
+		}
+		.pbottom
+		{
+			font-size: 23px;
+			font-weight: bolder;
+			display: flex;
+			justify-content: center;
+			margin: 10px auto;
+			height: 50px;
+		}
+		.result-place
+		{
+			display: flex;
+			justify-content: center;
+			margin: 20px auto;
+			font-weight: bold;
+			color: blue;
+			font-size: 20px;
+		}
+
+		#btnNewGame
+		{
+			height: 40px;
+			font-size: 20px;
+
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<center>Stone-Paper-Scissor</center>
+	</header>
+	<div style="width: 100%;">
+		<div class="border" id="form_div">
+			<form>
+				<div class="disp-flex">
+					<label>Enter Your Name:</label>
+					<input type="textbox" id="txtUname" placeholder="Your Name"/>
+				</div>
+				<input type="button" id="btnPlay" value="PLAY" class="btn-play" onclick="btnPlayClicked()"/> 
+			</form>
+		</div>
+		<div class="play-area">
+			
+			<div class="player border">
+				<div id="sc_cpu" class="choice border">
+					<img id="cpu_choice_img" src="images/question_mark.gif">
+				</div>
+				<div class="selected">
+				<div><figure class="cpu-opt"><img src="images1/l_rock.png"></figure></div>
+				<div><figure class="cpu-opt"><img src="images1/l_paper.png"></figure></div>
+				<div><figure class="cpu-opt"><img src="images1/l_scissor.png"></figure></div>
+				</div>
+				<div class="pbottom">
+					<label>CPU&nbsp;:&nbsp;</label>
+					<label id="cpu_score">0</label>
+				</div>
+			</div>
+			<div class="player border">
+				<div id="sc_user" class="choice border">
+					<img id="user_choice_img" src="images/question_mark.gif">
+				</div>			
+				<div class="selected">
+				<!-- <div class="opt" id="r"><figure class="user-opt"><img src="images/rock.png"></figure></div> -->
+				<div><button class="btn-select" id="btnRock" value="rock" onclick="selectedValue(this.value)"><img src="images1/r_rock.png"></button></div>
+				<div><button class="btn-select" id="btnPaper" value="paper" onclick="selectedValue(this.value)"><img src="images1/r_paper.png"></button></div>
+				<div><button class="btn-select" id="btnScissor" value="scissor" onclick="selectedValue(this.value)"><img src="images1/r_scissor.png"></button></div>
+				<!-- <div class="opt" id="s"><figure class="user-opt"><img src="images/scissors.png" style="transform: scaleX(-1);"></figure></div> -->
+				
+				</div>
+				<div class="pbottom">
+					<label id="pname"></label>
+					<label id="score">0</label>
+				</div>
+			</div>
+		</div>
+		<div class="result-place">
+			<label id="result"></label>
+		</div>
+		<div class="disp-flex">
+			<button id="btnNewGame" onclick="btnNewGameClick()">New Game</button>
+		</div>
+	</div>
+	
+	<script>
+		//document.getElementById('btn-play').onclick = btnPlayClicked();
+		//document.getElementsByName('PLAY').onclick = btnPlayClicked();
+		function btnNewGameClick()
+		{
+			window.location.reload();
+		}
+
+		document.getElementById("sc_cpu").style.display = 'none';
+		document.getElementById("sc_user").style.display = 'none';
+
+
+		function btnPlayClicked()
+		{
+			var name = document.getElementById("txtUname").value;
+			if(name != "")
+			{
+				document.getElementById("pname").innerHTML += name+" :&nbsp;";
+				document.getElementById("form_div").style.display = 'none';
+				document.getElementById("sc_cpu").style.display = 'flex';
+				document.getElementById("sc_user").style.display = 'flex';
+				checkPlayer(name);
+			}
+			else
+			{
+				alert("Please Enter Your Name");
+			}
+			
+		}
+		
+		function checkPlayer(name)
+		{
+			if(name!="")
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		function sleep(milliseconds) {
+		 	const date = Date.now();
+  			let currentDate = null;
+  			do {
+    			currentDate = Date.now();
+  			} while (currentDate - date < milliseconds);
+		}
+
+		
+		function selectedValue(choice)
+		{
+			if(document.getElementById("pname").innerHTML == "")
+			{
+				alert("Please Enter your name...");
+			}
+			else
+			{
+				checkWinner(imageChange(choice),cpuChoice());
+			}
+		}
+
+		function imageChange(choice)
+		{
+			var c = choice;
+			document.getElementById("user_choice_img").src = "images1/r_"+c+".png";
+			return choice;
+		}
+
+		let cpu_choices = ["rock","paper","scissor"]; // declared once for entire lifecycle
+
+		function cpuChoice()
+		{
+			//var choices = ["rock","paper","scissors"]; // bad practice... declare globally
+			//var cpu_choice = cpu_choices[Math.floor(Math.random()*cpu_choices.length)];
+			var cpu_choice = cpu_choices[Math.floor(Math.random()*3)];
+			console.log("cpu="+cpu_choice);
+			document.getElementById("cpu_choice_img").src = "images1/l_"+cpu_choice+".png";
+			console.log(cpu_choice);
+			return cpu_choice;
+		}	
+
+		function checkWinner(user_choice,cpu_choice)
+		{
+			var u_choice = user_choice;
+			console.log("user = "+user_choice);
+			var pc_choice = cpu_choice; 
+			if(u_choice == pc_choice)
+			{
+				document.getElementById("result").innerHTML = "Match Draw";
+			}
+			else if((u_choice == 'rock' && pc_choice=='scissor') || (u_choice=='paper' && pc_choice=='rock') || (u_choice=='scissor' && pc_choice=='paper'))
+			{
+				var score = parseInt(document.getElementById("score").innerHTML);
+				console.log(score);
+				document.getElementById("score").innerHTML = score+1;
+				document.getElementById("result").innerHTML= "Congratulations "+document.getElementById("pname").innerHTML+" You Won This Game"
+			}
+			else
+			{
+				var score = parseInt(document.getElementById("cpu_score").innerHTML);
+				console.log(score);
+				document.getElementById("cpu_score").innerHTML = score+1;
+				document.getElementById("result").innerHTML = document.getElementById("pname").innerHTML + " Lost the game..."
+			}
+
+		}
+	
+	</script>
+</body>
+</html>
