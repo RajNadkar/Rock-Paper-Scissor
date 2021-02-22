@@ -127,17 +127,5 @@ function checkWinner(user_choice,cpu_choice)
         console.log(score);
         document.getElementById("bot_score").innerHTML = score+1;
         document.getElementById("result").innerHTML = document.getElementById("pname").innerHTML + " Lost the game...";
-        highlightWinner("score_board_1");
     }
-}
-
-
-function highlightWinner(id)
-{
-    var winner = id;
-    alert(winner);
-    // winner.animate({background:'yellow',color:'black'},"fast");
-    // winner.animate({background:'black',color:'white'},"fast");
-    // winner.animate({background:'yellow',color:'black'},"fast");
-    // winner.animate({background:'black',color:'white'},"fast");           
 }
