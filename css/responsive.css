@@ -1,0 +1,41 @@
+@media screen and (max-width: 800px) {
+  header {
+    background-color: yellow !important;
+    font-weight: bold;
+    font-size: medium;
+    color: black;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cpu-opt {
+    display: flex;
+    justify-content: center;
+    display: none;
+  }
+  .play-area {
+    display: block;
+  }
+  .player {
+    width: 100%;
+  }
+  .selected {
+    display: flex;
+    border: 1px solid;
+  }
+  .selected img {
+    height: 50px;
+    width: 50px;
+  }
+  .pbottom {
+    display: none;
+  }
+  .selected {
+    border: none !important;
+  }
+  .player {
+    border: none !important;
+  }
+}
