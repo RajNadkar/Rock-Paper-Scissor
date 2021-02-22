@@ -120,7 +120,6 @@ function checkWinner(user_choice,cpu_choice)
         console.log(score);
         document.getElementById("p_score").innerHTML = score+1;
         document.getElementById("result").innerHTML= "Congratulations "+document.getElementById("pname").innerHTML+" You Won This Game";
-        highlightWinner("score_card_2");
     }
     else
     {
